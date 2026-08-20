@@ -13,6 +13,7 @@ const estudiantes: Estudiante[] = [];
 let idCounter: number = 1;
 
 router.get('/', (req, res) => {
+  // #swagger.description = 'Obtiene la lista de estudiantes, con filtro opcional por bootcamp'
   const { bootcamp } = req.query;
   let resultado = [...estudiantes];
 
@@ -26,6 +27,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
+  // #swagger.description = 'Obtiene un estudiante específico por su id'
   const id = Number(req.params.id);
   const estudiante = estudiantes.find((e) => e.id === id);
 
@@ -37,6 +39,7 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
+  // #swagger.description = 'Crea un nuevo estudiante'
   const { nombre, email, bootcamp } = req.body;
 
   if (!email) {
@@ -57,6 +60,7 @@ router.post('/', (req, res) => {
 });
 
 router.put('/:id', (req, res) => {
+    // #swagger.description = 'Actualiza los datos de un estudiante existente'
   const id = Number(req.params.id);
   const estudiante = estudiantes.find((e) => e.id === id);
 
@@ -73,6 +77,7 @@ router.put('/:id', (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
+    // #swagger.description = 'Elimina un estudiante por su id'
   const id = Number(req.params.id);
   const index = estudiantes.findIndex((e) => e.id === id);
 
